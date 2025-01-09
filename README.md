@@ -1,3 +1,4 @@
+# React Modal Component
 # React + TypeScript + Vite
 
 Install a new Vite project with the following command:
