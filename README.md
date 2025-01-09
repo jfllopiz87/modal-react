@@ -1,50 +1,76 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Install a new Vite project with the following command:
+npm init vite@latest modal-react
 
-Currently, two official plugins are available:
+Select the following options:
+ - react
+ - TypeScript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+run the following commands
+...
+- run cd modal-react
+- run npm  install
+- run npm  install --D vitest
+...
 
-## Expanding the ESLint configuration
+Add the following script to the package.json file:
+```js
+"scripts": { "test": "vitest" }
+```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
+Create a new file named vitest.config.ts in the root of the project with the following content:
 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    browser: {
+      enabled: true,
+      name: 'chromium',
+      provider: 'playwright',
     },
   },
 })
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Move react and react-dom to devDependencies
+install the testing libraries with the following command:
+...
+- run npm install -D @testing-library/react @testing-library/user-event @testing-library/dom @testing-library/jest-dom
+- run npm install -D @vitest/browser
+- run npm install -D jest @types/jest
+- run npm install -D playwright
+...
 
+install tailwindcss with the following command:
+...
+- run npm install --save-dev tailwindcs postcss autoprefixer
+...
+
+update the tailwind.config.js file with the following content:
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+  /** @type {import('tailwindcss').Config} */
+  export default {
+    content: ["./index.html","./src/**/*.{js,ts,jsx,tsx}"],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }
 ```
+Copy tailwind css to the src/styles/index.css file
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+Create folder src/components
+Create file src/components/Modal.tsx
+Create folder src/components/__tests__
+Create file src/components/__tests__/Modal.test.tsx
+
+For Storybook:
+run npx sb@latest init
