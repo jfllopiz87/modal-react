@@ -1,6 +1,8 @@
 # React Modal Component
-# React + TypeScript + Vite
+All the steps to install the repository and dependencies used on this project
 
+
+# React + TypeScript + Vite
 Install a new Vite project with the following command:
 npm init vite@latest modal-react
 
@@ -38,6 +40,8 @@ export default defineConfig({
 ```
 
 Move react and react-dom to devDependencies
+
+# Testing
 install the testing libraries with the following command:
 ...
 - run npm install -D @testing-library/react @testing-library/user-event @testing-library/dom @testing-library/jest-dom
@@ -46,6 +50,7 @@ install the testing libraries with the following command:
 - run npm install -D playwright
 ...
 
+# Tailwind
 install tailwindcss with the following command:
 ...
 - run npm install --save-dev tailwindcs postcss autoprefixer
@@ -68,10 +73,13 @@ Copy tailwind css to the src/styles/index.css file
 @tailwind components;
 @tailwind utilities;
 ```
+
+# Folder Structure
 Create folder src/components
 Create file src/components/Modal.tsx
 Create folder src/components/__tests__
 Create file src/components/__tests__/Modal.test.tsx
 
+# Storybook
 For Storybook:
 run npx sb@latest init
